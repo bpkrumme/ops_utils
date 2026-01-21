@@ -1,0 +1,14 @@
+---
+- name: Send a webhook using Basic Auth
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Send a webhook
+      ansible.builtin.uri:
+        url: "{{ basic_webhook_url }}"
+        user: "{{ basic_webhook_username }}"
+        password: "{{ basic_webhook_password }}"
+        force_basic_auth: true
+        method: POST
+        body_format: json
+        body: "{{ basic_webhook_body }}"
